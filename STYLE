@@ -1,0 +1,382 @@
+By Ryan McCabe <ryan@numb.org>
+Last Updated: January 6, 2005
+
+L'enfer, c'est le code des Autres.
+
+
+Please follow the style of coding used throughout the program.
+
+Below I attempt to explain what that style is, but I'm sure
+there will be a lot of questions that aren't answered by this document.
+Look at the source to answer those questions.  If you're using some
+bizarre construction that's not used at all in the source, I probably
+wouldn't have used it.
+
+This document isn't an exposition of how one ought to write C code.  It's an
+explanation of how I write C code.  I like it when the source code for
+my programs is consistent.  If it makes you want to barf, fine, but if you're
+submitting patches for this program, please follow the guidelines.
+
+If you send me patches in some wildly different style (especially that
+wretched GNU indenting style), unless it's a really great patch, I'll
+probably ignore it.  Even if it's a really great patch, I might ignore it.
+
+I know this is all very pedantic, but I think keeping the code looking
+consistent is valuable: it makes for code that's easier to read and maintain.
+
+And it's prettier to me.
+
+--------------------------------------------------------------------------------
+TABS
+--------------------------------------------------------------------------------
+
+Tabs should be tabs, not spaces (i.e., do not expand tabs).
+
+--------------------------------------------------------------------------------
+SPACING AND LINE LENGTH
+--------------------------------------------------------------------------------
+
+Lines shouldn't be longer than 80 characters if it can be avoided.  Sometimes
+it can't.  That's fine.
+
+Spacing should be employed generously.  It makes code easier to read.
+
+Insert spaces after all punctuation (i.e., after ',', before and after ';' in
+for statements, before and after '=' and comparison operators).
+
+For example:
+	variable = function(param1, param2, param3);
+	if (variable == 9)
+	if (variable <= 10)
+	for (i = 0 ; i < 100 ; i++)
+
+Insert spaces before and after built-in operators.  For example;
+	int i = j + 5;
+	function(i % 5, param2);
+
+--------------------------------------------------------------------------------
+VARIABLES
+--------------------------------------------------------------------------------
+
+No variables named as such: 'thisIsItsName'.  Call it 'this_is_its_name'
+instead.
+
+No variables having names that begin with "my".  For example, 'my_value'.
+Please try to declare meaningful variable names.  Try to make variables' names
+descriptive of their functional role.
+
+When declaring variables, declare one variable per line; don't write:
+	int i, j, k;
+
+instead write:
+	int i;
+	int j;
+	int k;
+
+Declare variables in the innermost scope possible.
+
+In a block, after variable declarations, insert a blank line.  For example,
+... {
+	int i;
+	int j;
+	int k;
+
+	start_doing_other_things();
+}
+
+--------------------------------------------------------------------------------
+BRACES
+--------------------------------------------------------------------------------
+
+Braces go on the same line as the keyword, unless the line had to be wrapped.
+
+For example, don't write:
+
+if (condition_statement)
+{
+	actions;
+}
+
+Instead write:
+
+if (condition_statement) {
+	actions;
+}
+
+If a conditional ends up being longer than 80 characters, break it up as
+follows:
+
+if (this_very_long_condition == 1 && another_long_one == 1 &&
+	a_third_long_one == 1)
+{
+	actions;
+}
+
+--------------------------------------------------------------------------------
+FUNCTION DECLARATIONS AND PROTOTYPES
+--------------------------------------------------------------------------------
+
+[<function attributes>] <return type> <function name>(<param list>) {
+}
+
+for example:
+
+static inline int add_numbers(int param1, int param2) {
+const char *return_str(char *str) {
+void nothing(void) {
+
+If the function header is longer than 80 chars, wrap it as follows:
+
+static inline add_numbers(	int param1,
+							int param2,
+							int param3)
+{
+}
+
+Note the spacing after each parameter.  I don't like things like:
+
+static int add_numbers(int param1,int param2)
+
+Declare functions static unless there's a reason not to.
+
+--------------------------------------------------------------------------------
+KEYWORDS:
+--------------------------------------------------------------------------------
+
+Please write keywords as follows: keyword (expression).  Note the spacing.
+
+For example,
+
+if (condition)
+for (init ; condition ; action)
+return (value)
+switch (value);
+while (condition)
+
+The one exception is sizeof (and offsetof). Write
+	sizeof(variable)
+
+I realize that it's a keyword, but it behaves a lot like a function, so I tend
+to treat as such, so far as style goes.
+
+For the keywords if, for, and while, write:
+
+	keyword (condition)
+		action;
+
+Don't write:
+
+	keyword (condition) action;
+
+When the action for a conditional runs more than one line (because it
+exceeded 80 chars), even though the action consists of only one statement,
+please use braces.
+
+For example:
+
+	if (condition) {
+		some_func("here are the values that are passed to the function: %d, %d",
+			arg1, arg2);
+	}
+
+The same goes for things like nested for or while loops.  For example:
+
+	for (i = 0 ; i < 100 ; i++) {
+		for (j = 0 ; j < 100 ; j++)
+			statement;
+	}
+
+--------------------------------------------------------------------------------
+THE TERNARY OPERATOR, "?:"
+--------------------------------------------------------------------------------
+
+Please don't use this operator gratuitously.  Use it only in places such that
+not using it would force you to declare a new variable to hold a temporary
+value.
+
+For example things like the following are fine:
+
+	printf("The value of the integer is %s 812",
+		(integer_val > 812 ? "greater than" : "less than or equal to");
+
+Do not do things like:
+
+	int func(int param1) {
+		char *str = (param1 != NULL ? "not null" : "null");
+	}
+
+instead write:
+
+	int func(int param1) {
+		char str;
+
+		if (param1 != NULL)
+			str = "not null";
+		else
+			str = "null";
+	}
+
+--------------------------------------------------------------------------------
+COMPARISONS
+--------------------------------------------------------------------------------
+
+When you're checking whether a pointer is or isn't NULL, please write
+
+	if (pointer == NULL)  or if (pointer != NULL)
+
+instead of
+
+	if (!pointer)         or if (pointer)
+
+If you're checking whether an integer value is equal to zero, please use
+
+	if (integer_val == 0)
+
+instead of
+
+	if (!integer_val)
+
+The same goes for character values.  If you testing whether a character is
+equal to ascii 0, write:
+
+	if (char == '\0')
+
+I'm a-ok with using
+
+	if (boolean_variable) and if (!boolean_variable)
+
+to test whether a boolean is true or false, respectively, though.
+
+I am also ok with using things like (!strcmp()), (and others like it) that
+are standard C idiom.
+
+Don't write things like the following:
+
+	if ((var = func(param1, param2)) == 1) {
+		stuff;
+	}
+
+instead write:
+
+	var = func(param1, param2);
+	if (var == 1) {
+		stuff;
+	}
+
+The second form is easier to read than the first.
+
+Constructions like this are often helpful in loops, though,
+so I'm ok with things like
+
+	while ((p = strchr(string, ' ')) != NULL) {
+		...;
+	}
+
+where they're appropriate.
+
+--------------------------------------------------------------------------------
+SWITCH STATEMENTS
+--------------------------------------------------------------------------------
+
+Inside switch statements, please insert a blank line after each case block.
+
+For example:
+
+	switch (integer_var) {
+		case 1:
+			do_some_stuff();
+			break;
+
+		case 2:
+			do_some_other_stuff();
+			break;
+
+		default:
+			print_error("error string");
+			break;
+	}
+
+If you need to declare variables (open a block) inside a case statement, do:
+
+		case 1: {
+			int var1;
+			
+			var1 = some_func();
+			break;
+		}
+
+--------------------------------------------------------------------------------
+COMMENTS
+--------------------------------------------------------------------------------
+
+I tend to write my comments as follows:
+
+For one-line comments, I write:
+
+/* This is the comment. */
+
+For multi-line comments, I write:
+
+/*
+** This is a multi-line comment.
+** Here's the second line.
+*/
+
+No C++ style comments, please.
+
+Commenting large chunks of code out by inserting #if 0/#endif around it, is ok.
+
+--------------------------------------------------------------------------------
+TYPES
+--------------------------------------------------------------------------------
+
+In general don't typedef structs.
+
+If you want an 8-bit integer, use int8_t, and u_int8_t for an unsigned
+8-bit integers. (not char)
+
+int16_t for 16-bit integers, u_int16_t for unsigned 16-bit integers. (not short)
+int64_t for 64-bit integers, u_int64_t for unsigned 64-bit integers. (not long)
+
+u_int32_t for unsigned 32-bit integers.  I'm ok with 'int' for general stuff.
+	- If it really matters that it be a 32-bit value and not something else,
+      use 'int32_t'.
+
+The char type is fine when you're dealing with ASCII character values
+and strings.
+
+In general, don't hide types behind typedefs.  I know the above seems to
+contradict this, but I think, for example, 'int16_t' is more descriptive
+of what kind of values the variable can hold than, for example, 'short'.
+This is especially true as it relates to the 'long' type, which will be a
+different size on different architectures.
+
+I break this rule myself in a few places, but in general, I try to follow it.
+
+--------------------------------------------------------------------------------
+SAFETY (SECURITY)
+--------------------------------------------------------------------------------
+
+In this program, never use sprintf.  Always use snprintf instead.
+Never use str(n?)cpy, use xstrncpy instead.
+Never use str(n?)cat, use xstrncat instead.
+No exceptions.
+
+Don't improperly use format strings in functions that take a variable number
+of arguments.  In particular, never do things like:
+
+	char buffer[size];
+
+	fill_buffer(buffer, sizeof(buffer));
+	*printf(buffer);
+
+The above is wrong and leads to security problems.  Do:
+	char buffer[size];
+
+	fill_buffer(buffer, sizeof(buffer));
+	*printf("%s", buffer);
+
+These are just two of classes of sources of errors that tend to become
+security problems.  If I notice you making mistakes like these (or making
+other mistakes that could lead to security holes), I'll delete your patch
+right off.

@@ -1,0 +1,12 @@
+SYNTAX: PORK::get_buddy_away(person, [account])
+	Requests the away message for the specified user.
+
+INPUT PARAMETERS
+	person  : The user whose away message is requested.
+	account : (Optional) The account from which to send the request.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure. To retrieve the results of the lookup, you'll have to install an event handler to catch the RECV_AWAYMSG event.
+
+SEE ALSO
+	buddy away

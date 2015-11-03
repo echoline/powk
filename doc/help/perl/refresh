@@ -1,0 +1,11 @@
+SYNTAX: PORK::refresh()
+	Refreshes the screen.
+
+INPUT PARAMETERS
+	None
+
+RETURN VALUE
+	Returns 0.
+
+SEE ALSO
+	refresh

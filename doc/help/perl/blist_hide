@@ -1,0 +1,11 @@
+SYNTAX: PORK::blist_hide([refnum])
+	Hides the buddy list display in a current window. If it's already hidden, no action is taken.
+
+INPUT PARAMETERS
+	refnum: (Optional) The reference number of the window in which the buddy list will be hidden. If this parameter is omitted, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	blist hide

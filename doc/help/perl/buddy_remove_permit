@@ -1,0 +1,12 @@
+SYNTAX: PORK::buddy_remove_permit(user, [account])
+	Removes a screen name from an account's permitted users list.
+
+INPUT PARAMETERS
+	user   : The screen name to remove from the permitted users list.
+	account: (Optional) The account whose permit list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy remove_permit

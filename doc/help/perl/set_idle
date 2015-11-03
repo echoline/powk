@@ -1,0 +1,12 @@
+SYNTAX: PORK::set_idle(seconds, [account])
+	Sets the idle time for the specified account. If no account is specified, the idle time is set for the current account.
+
+INPUT PARAMETERS
+	seconds: The number of seconds to which idle time will be set.
+	account: (Optional) The account to set idle.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	idle

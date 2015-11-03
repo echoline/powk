@@ -1,0 +1,11 @@
+SYNTAX: PORK::win_erase([refnum])
+	Clears the current window. The text that was displayed in the window before the win erase command was executed is gone for good.
+
+INPUT PARAMETERS
+	refnum: (Optional) The reference number of the window to erase. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win erase

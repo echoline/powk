@@ -1,0 +1,13 @@
+SYNTAX: PORK::chat_ban(chat_room, user, [account])
+	Bans a user from a chat room.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room in which to ban the specified user user.
+	user     : The user to ban. This may be a hostmask.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	chat ban. 

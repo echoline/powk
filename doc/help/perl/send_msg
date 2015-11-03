@@ -1,0 +1,13 @@
+SYNTAX: PORK::send_msg(destination, msg, [account])
+	Sends a private message.
+
+INPUT PARAMETERS
+	destination: The screen name to send the message to.
+	msg        : The message to send.
+	account    : (Optional) The account from which to send the message.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	msg

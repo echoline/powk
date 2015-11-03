@@ -1,0 +1,8 @@
+SYNTAX: get_profile([account])
+	Returns the currently stored profile for a (local) account.
+
+INPUT PARAMETERS
+	account: (Optional) The account for which to return a profile.
+
+RETURN VALUE
+	On success, returns the profile of the requested account, or the profile for the account that's active in the current window, if no account name is specified. If an error occurs, undef is returned.

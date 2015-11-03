@@ -1,0 +1,536 @@
+THE EVENT COMMAND SET
+	The pork events system allows zero or more event handlers to be installed for each of the events described below. Event handlers are executed when the event they're handling occurs. Event handlers are normally Perl functions. Many events pass parameters to their event handlers; the parameters passed into each event handler are enumerated and described below.
+	For events that send something, event handlers are executed before whatever is to be sent is actually sent. For events that are triggered upon receiving something (e.g. receiving an IM), event handlers are executed before any output that normally accompanies the event is printed.
+
+	The events system allows for event handlers to break the chain of control and fully handle events themselves. This is accomplished by returning a non-zero value from an event handler. For example, an event handler for the SEND_IDLE event could send the server 30 + the number of idle seconds that would have been reported, then return 1, letting the client know that it has fully handled the event, and all the processing that normally occurs for the event will be bypassed.
+
+EVENTS
+  %cBUDDY_AWAY
+	This event signal is received when a user on the current account's buddy_list goes away.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who went away.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cBUDDY_BACK
+	This event signal is received when a user on the current account's buddy list returns from being away.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who returned from being away.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cBUDDY_IDLE
+	This event signal is received when a user on the current account's buddy list becomes idle.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who became idle.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cBUDDY_SIGNOFF
+	This event signal is received when a user on the current account's buddy list signs off.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who signed off.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cBUDDY_SIGNON
+	This event signal is received when a user on the current account's buddy list signs on.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who signed on.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cBUDDY_UNIDLE
+	This event signal is received when a user on the current account's user list is no longer idle.
+
+	Parameters:
+	  <user> (string)
+		The username of the user who is no longer idle.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cQUIT
+	This event signal is generated when the /quit command is executed.
+
+	Parameters:
+	  <quit msg>: The quit message, if any.
+
+  %cRECV_ACTION
+	This event signal is generated when an action is received from another user.
+
+	Paramters:
+	  <sender> (string)
+		The user who sent the action.
+
+	  <sender userhost> (string)
+		The userhost of the sender, if available.
+
+	  <dest> (string)
+		The destination, as specified, by the sender.
+
+	  <action msg> (string)
+		The text of the action message.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cRECV_AWAYMSG
+	This event signal is generated when a user's away message is received.
+
+	Parameters:
+	  <user> (string)
+		The user whose away message was received.
+
+	  <member since> (integer, UNIX time format)
+		The time since the user's account has existed.
+
+	  <online since> (integer, UNIX time format)
+		The time the user signed on.
+
+	  <idle time> (integer)
+		The user's idle time.
+
+	  <warning level> (integer)
+		The user's warning level.
+
+	  <away message> (string)
+		The user's away message.
+
+	  <refnum> (integer)
+		The reference number of the account that received the away message.
+
+  %cRECV_CHAT_ACTION
+	This event signal is generated when an action is received in a chat room.
+
+	Paramters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <dest> (string)
+		The destination of the action as specified by the sender.
+
+	  <sender> (string)
+		The user who sent the action.
+
+	  <userhost> (string)
+		The userhost of the the sender, if available.
+
+	  <action msg> (string)
+		The text of the action message.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cRECV_CHAT_INVITE
+	This event signal is generated when an invitation to a chat room received.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <user> (string)
+		The user who sent the chat invitation.
+
+	  <userhost> (string)
+		The userhost of the the sender of the chat invitation, if available.
+
+	  <message> (string)
+		The message that accompanied the chat invitation or undef if none was given.
+
+	  <refnum> (integer)
+		The reference number of the account that was invited to a chat room.
+
+  %cRECV_CHAT_JOIN
+	This event signal is generated when a chat room is joined.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <user> (string)
+		The user who joined the chat room.
+
+	  <userhost> (string)
+		The userhost of the user who joined, if available.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cRECV_CHAT_KICK
+	This event signal is generated when a user is forcibly removed from a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <kicked> (string)
+		The username of the person who was kicked.
+
+	  <kicker> (string)
+		The username of the person who initiated the kick.
+
+	  <reason> (string)
+		The reason, if any, given for the kick.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cRECV_CHAT_LEAVE
+	This event signal is generated when leaving a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <user> (string)
+		The user who left the chat room.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cRECV_CHAT_MSG
+	This event signal is generated when a message is received in a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <dest> (string)
+		The destination of the message as specified by the sender.
+
+	  <sender> (string)
+		The user who sent the message.
+
+	  <userhost> (string)
+		The userhost of the the sender, if available.
+
+	  <message> (string)
+		The text of the message.
+
+	  <refnum> (integer)
+		The reference number of the account that received the chat message.
+
+  %cRECV_CHAT_NOTICE
+	This event signal is generated when a notice is received in a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <dest> (string)
+		The destination of the notice as specified by the sender.
+
+	  <sender> (string)
+		The user who sent the notice.
+
+	  <userhost> (string)
+		The userhost of the the sender, if available.
+
+	  <message> (string)
+		The notice text.
+
+	  <refnum> (integer)
+		The reference number of the account that received the chat message.
+
+  %cRECV_CHAT_MODE
+	  <name> (string)
+		The name of the chat room.
+
+	  <sender> (string)
+		The user who set the mode.
+
+	  <mode> (string)
+		The mode string.
+
+	  <refnum> (integer)
+		The reference number of the account that received the chat message.
+
+  %cRECV_CHAT_QUIT
+	  <name> (string)
+		The name of the chat room.
+
+	  <user> (string)
+		The user who quit.
+
+	  <quit msg> (string)
+		The quit message, if any.
+
+	  <refnum> (integer)
+		The reference number of the account that received the chat message.
+
+  %cRECV_IM
+	This event signal is generated when a private message is received.
+
+	Parameters:
+	  <sender> (string)
+		The user who sent the IM.
+
+	  <sender userhost> (string)
+		The userhost of the sender, if available.
+
+	  <dest> (string)
+		The destination, as specified, by the sender.
+
+	  <auto-reply?> (boolean)
+		0 if the IM is not an auto-reply.
+		1 if the IM is an auto-reply.
+
+	  <message> (string)
+		The message that was received.
+
+	  <refnum> (integer)
+		The reference number of the account that received the IM.
+
+  %cRECV_NOTICE
+	This event signal is generated when a notice is received.
+
+	Parameters:
+	  <sender> (string)
+		The user who sent the IM.
+
+	  <sender userhost> (string)
+		The userhost of the sender, if available.
+
+	  <dest> (string)
+		The destination, as specified, by the sender.
+
+	  <message> (string)
+		The message that was received.
+
+	  <refnum> (integer)
+		The reference number of the account that received the IM.
+
+  %cRECV_PROFILE
+	This event signal is generated when a user's profile is received.
+
+	Parameters:
+	  <user> (string)
+		The user whose profile was received.
+
+	  <member since> (integer, UNIX time format)
+		The time since the user's account has existed.
+
+	  <online since> (integer, UNIX time format)
+		The time the user signed on.
+
+	  <idle time> (integer)
+		The user's idle time.
+
+	  <warning level> (integer)
+		The user's warning level.
+
+	  <profile> (string)
+		The user's profile.
+
+	  <refnum> (integer)
+		The reference number of the account that received the profile.
+
+  %cRECV_RAW
+	This event is generated for text-based protocols (e.g., IRC) when raw data is received from the server.
+
+	Parameters:
+	  <cmd> (string)
+		The command (or numeric) received.
+
+	  <orig str> (string)
+		The complete line of text received.
+
+  %cRECV_SEARCH_RESULT
+	This event signal is generated when the results of a search command are received.
+
+	Parameters:
+	  <search string> (string)
+		The string for which the search was initiated.
+
+	  <search results> (string)
+		The results of the search.
+
+	  <refnum> (integer)
+		The reference number of the account that initiated the search.
+
+  %cRECV_WARN
+	This event signal is generated when a warning is received.
+
+	Parameters:
+	  <user> (string)
+		The user who sent the warning or undef if it was anonymous.
+
+	  <warn level> (integer)
+		The new warning level of the user who was warned.
+
+	  <refnum> (integer)
+		The reference number of the account that was warned.
+
+  %cSEND_ACTION
+	This event signal is generated when a local screen name sends an action to another user.
+
+	Parameters:
+	 <user> (string)
+		The user to whom the action was sent.
+
+	 <action msg> (string)
+		The text of the action message that was sent.
+
+	  <refnum> (integer)
+		The reference number of the account that sent the action.
+
+  %cSEND_AWAY
+	This event signal is generated when a local screen name sends an away message.
+
+	Parameters:
+	  <away message> (string)
+		The text of the away message or undef if none was given.
+
+	  <refnum> (integer)
+		The reference number of the account that sent the away message.
+
+  %cSEND_CHAT_MSG
+	This event signal is generated when a local screen name sends an action in a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <message> (string)
+		The text of the action message.
+	
+	  <refnum> (integer)
+		The reference number of the account that sent the message.
+
+  %cSEND_CHAT_INVITE
+	This event signal is generated when a local screen name sends a chat invitation.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <message> (string)
+		The message that was sent with the invitation or undef if no message was sent.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cSEND_CHAT_JOIN
+	This event signal is generated when a local screen name joins a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+
+  %cSEND_CHAT_LEAVE
+	This event signal is generated when a local screen name leaves a chat room.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <refnum> (integer)
+		The reference number of the account the generated the event. 
+
+  %cSEND_CHAT_MSG
+	This event signal is generated when a local screen name sends a chat message.
+
+	Parameters:
+	  <name> (string)
+		The name of the chat room.
+
+	  <message> (string)
+		The text of the message to be sent.
+	
+	  <refnum> (integer)
+		The reference number of the account that sent the message.
+		  
+  %cSEND_IDLE
+	This event signal is generated when a local screen name reports its idle time.
+
+	Parameters:
+	  <idle time> (integer)
+		The idle time in seconds that is to be reported.
+
+	  <refnum> (integer)
+		The reference number of the account that reported its idle time.
+		  
+  %cSEND_IM
+	This event signal is generated when an IM is sent.
+
+	Parameters:
+	  <user> (string)
+		The user to whom the IM is to be sent.
+
+	  <message text> (string)
+		The text of the IM to be sent.
+
+	  <refnum> (integer)
+		The reference number of the account that sent the IM.
+
+  %cSEND_LINE
+	This event signal is generated when the "/input send" command is executed (e.g. by pressing enter on the input line).
+
+	Parameters:
+	  <input line> (string)
+		The input line that is to be sent.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+		  
+  %cSEND_PROFILE
+	This event signal is generated when a local screen name sends its profile.
+
+	Parameters:
+	  <profile text> (string)
+		The contents of the profile that is to be sent.
+
+	  <refnum> (integer)
+		The reference number of the account whose profile is to be sent.
+		  
+  %cSEND_WARN
+	This event signal is generated when a local screen name sends a warning.
+
+	Parameters:
+	  <user> (string)
+		The person who is to be warned.
+
+	  <anonymous?> (boolean)
+		0 is the warning is not anonymous.
+		1 if the warning is anonymous.
+
+	  <refnum> (integer)
+		The reference number of the account on which the event was triggered.
+		  
+  %cSIGNOFF
+	This event signal is generated when a local screen name has been signed off.
+
+	Parameters:
+	  <refnum> (integer)
+		The reference number of the account that signed off.
+		  
+  %cSIGNON
+	This event signal is generated when a local screen name has been successfully signed on.
+
+	Parameters:
+	  <refnum> (integer)
+		The reference number of the account that signed on.
+
+  %cUNLOAD
+	This event signal is generated when the "/perl_dump" command is executed.
+
+	No parameters

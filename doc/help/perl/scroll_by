@@ -1,0 +1,12 @@
+SYNTAX: PORK::scroll_by(lines, [refnum])
+	Scrolls a window's display by the specified number of lines.
+
+INPUT PARAMETERS
+	lines: The number of lines by which the window will be scrolled. A negative number will cause the display to be scroll up. A positive number will cause the display to be scrolled down.
+	refnum: (Optional) The reference number of the window to scroll. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	scroll by

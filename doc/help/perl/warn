@@ -1,0 +1,14 @@
+SYNTAX: PORK::warn(user, how, [account])
+	Warns a user.
+
+INPUT PARAMETERS
+	user   : The user to warn.
+	how    : 1 to warn the user anonymously, 0 otherwise.
+	account: The account from which to send the warning.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy warn
+	buddy warn_anon

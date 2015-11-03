@@ -1,0 +1,15 @@
+SYNTAX: PORK::buddy_alias(user, alias, [account])
+	Causes the specified user on an account's buddy list to be called the specified alias everywhere the buddy's screen name is displayed.
+
+	The buddy for whom an alias is set must be on the account's buddy list.
+
+INPUT PARAMETERS
+	user   : The buddy for whom the alias will apply.
+	alias  : The alias for the buddy.
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy alias

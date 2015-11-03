@@ -1,0 +1,11 @@
+SYNTAX: PORK::echo(msg)
+	Echo a string to the screen. The string may contain embedded color attributes. This function is analogous to the echo command.
+
+INPUT PARAMETERS
+	msg: The text of the message to be echoed.
+
+RETURN VALUE
+	Returns -1 if no message is specified, 0 otherwise.
+
+SEE ALSO
+	echo

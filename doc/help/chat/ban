@@ -1,0 +1,8 @@
+SYNTAX: chat ban <user>
+	Bans the specified <user> from the chat IF it was created by this account.
+
+PARAMETERS
+	<user>     : The user to ban.
+
+SEE ALSO
+	chat

@@ -1,0 +1,11 @@
+SYNTAX: PORK::win_clear([refnum])
+	Clears a window. The text that was displayed in the window before it was cleared can be recovered by scrolling up.
+
+INPUT PARAMETERS
+	refnum: (Optional) The reference number of the window to clear. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0.
+
+SEE ALSO
+	win clear

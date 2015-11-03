@@ -1,0 +1,11 @@
+SYNTAX: PORK::blist_start([account])
+	Moves a buddy list's cursor to the bottom line of that buddy list.
+
+INPUT PARAMETERS
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the account that's bound to the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	blist start

@@ -1,0 +1,24 @@
+## permit/deny mode (1-5)
+m 1
+
+## report idle time (boolean)
+i 1
+
+## groups start with g, are followed by the
+## users in the group.
+g test group1
+
+## "buddies" start with b.  b is for buddy.
+b test g1b1
+b test g1b2
+g test group2
+b test g2b1
+b test g2b2
+
+## permitted users an be added like this:
+p permit1
+p permit2
+
+## users can be blocked like this:
+d deny1
+d deny2

@@ -1,0 +1,11 @@
+SYNTAX: PORK::scroll_page_up([refnum])
+	Scrolls a window's display up by one page (i.e. the number of visible rows in the display).
+
+INPUT PARAMETERS
+	refnum: (Optional) The reference number of the window to scroll. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	scroll page_up

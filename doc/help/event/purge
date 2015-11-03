@@ -1,0 +1,2 @@
+SYNTAX: event purge
+	Removes all event handlers.

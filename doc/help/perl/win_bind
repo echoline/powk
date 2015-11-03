@@ -1,0 +1,12 @@
+SYNTAX: PORK::win_bind(account, [refnum])
+	Binds a screen name to a window. Pork allows for an unlimited number of screen names to be signed on at the same time. Each window has 0 or 1 screen names bound to it. Any commands executed in a window are executed on behalf of the screen name that is bound to the window.
+
+INPUT PARAMETERS
+	account: The account to bind to the specified window.
+	refnum: (Optional) The reference number of the window the account will be bound to. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win bind

@@ -1,0 +1,12 @@
+SYNTAX: PORK::report_idle(boolean, [account])
+	Control whether idle time is reported for an account.
+
+INPUT PARAMETERS
+	boolean: 1 to enable reporting idle time, 0 to disable it.
+	account: The account for which to enable or disable reporting idle time.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	buddy report_idle

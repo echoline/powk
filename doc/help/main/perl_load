@@ -1,0 +1,8 @@
+SYNTAX: perl_load <filename>
+	Loads the specified Perl script.
+
+PARAMETERS
+	<filename>: The filename of the Perl script to be loaded.
+
+SEE ALSO
+	perl

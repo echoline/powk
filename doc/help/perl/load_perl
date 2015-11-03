@@ -1,0 +1,12 @@
+SYNTAX: load_perl(filename)
+	Loads the specified Perl script.
+
+INPUT PARAMETERS
+	filename: The filename of the Perl script to be loaded.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	perl
+	perl_load

@@ -1,0 +1,12 @@
+SYNTAX: PORK::win_renumber(new_refnum, [old_refnum])
+	Changes the reference number of a window. If the reference number that is requested is currently in use, the window that has that reference number and the specified window will have their reference numbers swapped.
+
+INPUT PARAMETERS
+	new_refnum: The new reference number for the specified window.
+	old_refnum: (Optional) The reference number of the window to change. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win renumber

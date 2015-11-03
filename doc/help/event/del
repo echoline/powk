@@ -1,0 +1,9 @@
+SYNTAX: event del <event type> [<handler cmd>]
+	Removes one or more event handlers for the specified event type.
+
+PARAMETERS
+	<event type> : The event type of the handler(s) that are to be removed.
+	<handler cmd>: (Optional) The command such that any event handlers of the specified type that call this command will be removed. If this parameter is omitted, all handlers for the specified event type will be removed.
+
+SEE ALSO
+	event

@@ -1,0 +1,21 @@
+SYNTAX: PORK::privacy_mode(mode, [account])
+
+DESCRIPTION
+	Sets the privacy mode for an account.
+
+	Below are the valid mode values for AIM and the settings to which they correspond:
+		1 - Allow all users.
+		2 - Block all users.
+		3 - Allow only the users on the permit list.
+		4 - Block only the users on the block list.
+		5 - Allow only users on my buddy list.
+
+INPUT PARAMETERS
+	mode   : The privacy mode to be set.
+	account: (Optional) The account for which to set the specified mode. If no account is specified, the account that's bound to the currently visible window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy privacy_mode

@@ -1,0 +1,13 @@
+SYNTAX: PORK::chat_ignore(chat_room, user, [account])
+	Ignores a user in a chat room.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room in which to ignore the specified user user.
+	user     : The user to ignore.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	chat ignore

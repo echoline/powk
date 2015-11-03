@@ -1,0 +1,12 @@
+SYNTAX: buddy_remove(user, [account])
+	Removes a screen name from an account's buddy list.
+
+INPUT PARAMETERS
+	user   : The screen name that is to be removed.
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy remove

@@ -1,0 +1,12 @@
+SYNTAX: PORK::blist_width(width, [account])
+	Changes the width of a buddy list window to the specified number of columns.
+
+PARAMETERS
+	width  : The new width in columns of the buddy list window.
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the account that's bound to the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	blist width

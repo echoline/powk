@@ -1,0 +1,11 @@
+SYNTAX: PORK::buddy_clear_block([account])
+	Removes all entries from an account's blocked users list.
+
+INPUT PARAMETERS
+	account: (Optional) The account whose block list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy clear_block

@@ -1,0 +1,11 @@
+SYNTAX: PORK::timer_purge()
+	Deletes all timer events.
+
+INPUT PARAMETERS
+	None
+
+RETURN VALUE
+	Returns 0.
+
+SEE ALSO
+	timer purge

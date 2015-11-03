@@ -1,0 +1,11 @@
+SYNTAX: PORK::blist_refresh([account])
+	Refresh a buddy list's display.
+
+INPUT PARAMETERS
+	account: The account whose buddy list will be refreshed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	blist refresh

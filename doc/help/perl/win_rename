@@ -1,0 +1,12 @@
+SYNTAX: PORK::win_rename(name, [refnum])
+	Renames a window.
+
+INPUT PARAMETERS
+	name: The new name of the window.
+	refnum: (Optional) The reference number of the window to rename. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win rename

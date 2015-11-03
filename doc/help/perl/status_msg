@@ -1,0 +1,11 @@
+SYNTAX: PORK::status_msg(msg)
+	Prints a status message to the screen.
+
+INPUT PARAMETERS
+	msg: The text of the message to be printed.
+
+RETURN VALUE
+	Returns -1 if no message is specified, 0 otherwise.
+
+SEE ALSO
+	perl err_msg

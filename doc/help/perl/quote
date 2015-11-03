@@ -1,0 +1,9 @@
+SYNTAX: PORK::quote(string, [account])
+	Send a command string directly to the server. This is supported only by IRC.
+
+INPUT PARAMETERS
+	string : Command string.
+	account: (Optional) The refnum of the account from which to send the command.
+
+RETURN VALUE
+	Returns -1 on failure, 0 on success.

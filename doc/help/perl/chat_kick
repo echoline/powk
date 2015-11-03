@@ -1,0 +1,14 @@
+SYNTAX: PORK::chat_kick(chat_room, user, reason, [account])
+	Kicks a user from a chat room.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room from which to kick the specified user user.
+	user     : The user to kick.
+	reason   : Reason for the kick.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	chat kick 

@@ -1,0 +1,11 @@
+SYNTAX: PORK::load(filename)
+	Loads a porkrc-style file. The format of this file is one pork command per line.
+
+INPUT PARAMETERS
+	filename: The filename to load.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	load

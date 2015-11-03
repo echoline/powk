@@ -1,0 +1,14 @@
+SYNTAX: PORK::chat_invite(chat_room, user, msg, [account])
+	Invites a user to a chat room with an optional message.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room to which to invite the user.
+	user     : The user to invite.
+	msg      : A message to be sent with the chat invitation. Specify undef to send no message.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	chat invite

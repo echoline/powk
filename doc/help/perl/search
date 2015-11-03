@@ -1,0 +1,12 @@
+SYNTAX: PORK::search(email_address, [account])
+	Request a list of all the screen names that the specified email address has registered.
+
+INPUT PARAMETERS
+	email address: The email address of interest.
+	account      : (Optional) The account from which to send the request.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure. To retrieve the results of the lookup, you'll have to install an event handler to handle the RECV_SEARCH_RESULT event.
+
+SEE ALSO
+	buddy search

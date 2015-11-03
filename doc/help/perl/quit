@@ -1,0 +1,8 @@
+SYNTAX: PORK::quit([exit_status])
+	Exit the client.
+
+INPUT PARAMETERS
+	exit_status: (Optional) The exit status of the process.
+
+RETURN VALUE
+	Returns -1 if more than one parameter is passed, otherwise doesn't return.

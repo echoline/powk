@@ -1,0 +1,8 @@
+SYNTAX: event list [<event type>]
+	Lists event handlers. The event handler list will display event handler reference number information, which is used by the 'event del_refnum' command.
+
+PARAMETERS
+	<event type>: (Optional) The event type for which handlers will be listed. If this parameter is omitted, all event handlers for all event types will be listed.
+
+SEE ALSO
+	event

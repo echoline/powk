@@ -1,0 +1,13 @@
+SYNTAX: PORK::blist_select([account])
+	If the entry a buddy list cursor is on is a group entry, this command has the same effect as PORK::blist_collapse. If the entry the cursor is on is a user entry, this command will open a query window with the user named by the entry, if one doesn't already exist, and that query window will be made visible.
+
+INPUT PARAMETERS
+	account: (Optional) The account whose buddy list will be used. If this parameter is omitted, the account that's bound to the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	perl blist_collapse
+	blist select
+	blist collapse

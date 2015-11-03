@@ -1,0 +1,12 @@
+SYNTAX: PORK::event_add(type, handler)
+
+INPUT PARAMETERS
+	type   : The type of event for which the handler will be installed.
+	handler: The name of the Perl function that will be called when the specified event type occurs.
+
+RETURN VALUE
+	On success, returns the reference number of the event handler that was installed, on failure returns -1.
+
+SEE ALSO
+	event
+	event add

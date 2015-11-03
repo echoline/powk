@@ -1,0 +1,5 @@
+SYNTAX: perl <function [arg0, ..., argN]> or <function(arg0, ..., argN)>
+	Runs the specified perl function with the specified arguments. The perl function must either be built-in or have been loaded with the perl_load command.
+
+SEE ALSO
+	perl_load

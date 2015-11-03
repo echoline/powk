@@ -1,0 +1,11 @@
+SYNTAX: PORK::win_prev()
+	Switch to the previous window in the window list. The window list is circular and sorted by reference number, so executing this command when the window with the lowest reference number is active will make the window with the highest reference number current.
+
+INPUT PARAMETERS
+	None
+
+RETURN VALUE
+	Returns 0.
+
+SEE ALSO
+	win prev

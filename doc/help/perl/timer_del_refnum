@@ -1,0 +1,11 @@
+SYNTAX: PORK::timer_del_refnum(refnum)
+	Deletes the timer event that has the specified reference number.
+
+INPUT PARAMETERS
+	refnum: The reference number of the timer that is to be deleted.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	timer del_refnum

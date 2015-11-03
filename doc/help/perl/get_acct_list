@@ -1,0 +1,8 @@
+SYNTAX: PORK::get_acct_list()
+	Returns a list of the currently connected accounts.
+
+INPUT PARAMETERS
+	none
+
+RETURN VALUE
+	Returns a list of the currently logged in usernames.

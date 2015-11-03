@@ -1,0 +1,11 @@
+SYNTAX: PORK::win_close([refnum])
+	Close a window. If the specified window is a chat window, you will exit the chat room bound to that window.
+
+INPUT PARAMETERS
+	refnum: (Optional) The reference number of the window to close. If no refnum is specified, the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win close

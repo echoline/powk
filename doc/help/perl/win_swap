@@ -1,0 +1,11 @@
+SYNTAX: PORK::win_swap(refnum)
+	Switches to the window with the specified reference number.
+
+INPUT PARAMETERS
+	refnum: The reference number of the window to which to switch.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	win swap

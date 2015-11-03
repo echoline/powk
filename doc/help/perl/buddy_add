@@ -1,0 +1,13 @@
+SYNTAX: PORK::buddy_add(user, group, [account])
+	Adds a user to an account's buddy list as a member of the specified group. The group must already exist.
+
+INPUT PARAMETERS
+	user   : The screen name of the user to be added.
+	group  : The group to add the screen name to.
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy add

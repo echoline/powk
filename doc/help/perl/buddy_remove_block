@@ -1,0 +1,12 @@
+SYNTAX: PORK::buddy_remove_block(user, [account])
+	Removes a screen name from an account's blocked users list.
+
+PARAMETERS
+	user   : The screen name to remove from the blocked users list.
+	account: (Optional) The account whose block list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy unblock

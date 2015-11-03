@@ -1,0 +1,12 @@
+SYNTAX: PORK::send_profile(profile, [account])
+	Sets the profile for an account on the server without saving it locally.
+
+INPUT PARAMETERS
+	profile: The profile text.
+	account: The account for which the profile will be sent.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	perl set_profile

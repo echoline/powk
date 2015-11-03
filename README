@@ -1,0 +1,53 @@
+WHAT IS PORK?
+-------------
+
+pork is an ncurses-based AOL instant messenger client. It uses the
+OSCAR protocol (the one the windows client uses) to access AIM. Pork
+features Perl scripting; an online help system; the ability to
+configure nearly all aspects of the program's look-and-feel; an alias
+system; and a powerful, fully-configurable key binding system. It
+supports being logged in with more than one screen name at the same
+time. The default look-and-feel of the client is modeled after the
+ircII IRC client. Anyone comfortable using ircII (or any clients
+derived from it -- e.g., epic, BitchX, etc.) will feel comfortable using
+pork.
+
+pork now supports IRC. The syntax for connecting to an IRC server is
+/connect -irc <username> <server>[:<port>[:<password>]] [... <serverN>[:<port>[:<password>]]]
+
+The look-and-feel of pork is pretty much a complete ripoff of
+the the look-and-feel of the excellent mw4.irc script for the epic IRC
+client by Amber Adams <amber@ojnk.net>. All credit for it goes to her.
+
+WHAT'S IT GOOD FOR?
+-------------------
+
+Before I wrote pork, I had wanted a console mode AIM client that I could
+run inside of screen (http://www.gnu.org/software/screen/screen.html) so
+that I would be able to access it from anywhere. I tried a few other
+console AIM clients, but none of them was very good at all, so I wrote
+my own.
+
+GETTING STARTED
+---------------
+
+If you've never used pork, you should probably read the 'QUICK_START'
+document. Even if you have used it, it might be useful.
+
+A sample buddy list is provided in the 'examples' directory.  You can
+edit it and copy it to ~/.pork/<screenname>/buddy_list to use it.  Note
+that any alphabetic characters in <screenname> must be lowercase and
+that there should be no space characters in <screenname>.
+
+If you've signed on to AIM in the past with the account with which
+you'll be connecting, pork will download the buddy list that's been
+stored on the server; you won't have to provide a buddy list, pork will
+bring your buddies to you.
+
+Type /help inside of the client to get a list of the topics for which
+help is available.
+
+Read the TODO file (I have actually updated this file).
+Send me patches.
+
+Ryan McCabe <ryan@numb.org>

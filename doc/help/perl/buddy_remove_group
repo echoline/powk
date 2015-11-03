@@ -1,0 +1,12 @@
+SYNTAX: PORK::buddy_remove_group(group, [account])
+	Removes a group and all the buddies who are members of that group from an account's buddy list.
+
+PARAMETERS
+	group  : The name of the group to remove.
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy remove_group

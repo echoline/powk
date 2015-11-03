@@ -1,0 +1,11 @@
+SYNTAX: PORK::event_del_refnum(refnum)
+	Removes the event handler with the specified reference number.
+
+INPUT PARAMETERS
+	refnum: The reference number of the event handler to remove.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	event del_refnum

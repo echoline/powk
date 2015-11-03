@@ -1,0 +1,11 @@
+SYNTAX: PORK::save()
+	Writes a new porkrc file containing the current aliases, bindings, and global /set options.
+
+INPUT PARAMETERS
+	None
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	save

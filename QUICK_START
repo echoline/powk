@@ -1,0 +1,59 @@
+To log into AIM, type /connect <username>, where <username> is your AIM
+screen name.  If you don't have an AIM screen name, you can get one
+at http://aim.aol.com.
+
+When you're inside the client, type /help to find out what commands are
+supported.  Type /help <command> to get help on a particular command.
+
+Below are the default key bindings.  All keys can have their bindings
+changed or removed completely.  Enter the commands '/help bind' and
+'/help keys' for more information.
+
+Default main key bindings:
+
+CTRL+A			Move the input cursor to the start of the line.
+CTRL+B			Move the input cursor to the start of the previous word.
+CTRL+E			Move the input cursor to the end of the line.
+CTRL+F			Move the input cursor to the start of the next word.
+CTRL+H			Backspace.
+META+BACKSPACE	Delete the previous word on the input line.
+CTRL+K			Close the current window.
+CTRL+L			Refresh the display.
+CTRL+T			Toggle timestamps on messages.
+CTRL+U			Clear the input line.
+CTRL+X			Switch to the next window in the window list.
+CTRL+Y			Switch to the previous window in the window list.
+TAB				Switch the input focus to the buddy list.
+META+/			Command auto-completion.
+META+<1-9>		Switch to the window having the specified number.
+HOME			Scroll to the top of the display.
+END				Scroll to the bottom of the display.
+PAGE UP			Scroll the display up one page.
+PAGE DOWN		Scroll the display down one page.
+UP ARROW		Scroll the input history list up.
+DOWN ARROW		Scroll the input history list down.
+CTRL+META+X		Bind the next account to the current window.
+
+Default buddy list key bindings:
+
+END				Move the buddy list cursor to the bottom of the buddy list.
+HOME			Move the buddy list cursor to the top of the buddy list.
+PAGE UP			Move the buddy list cursor one page up.
+PAGE DOWN		Move the buddy list cursor one page down.
+UP ARROW		Move the buddy list cursor up.
+DOWN ARROW		Move the buddy list cursor down.
+ENTER			Collapse the group the cursor is on, or if the cursor is on a
+                user, open a conversation window with that user (or go to the
+                conversation window, if one already exists).
+TAB				Switch to main input focus.
+CTRL+L			Refresh the buddy list display.
+META+p			Remove the user the cursor is on from the permit list.
+META+P			Add the user the cursor is on to the permit list.
+META+b			Remove the user the cursor is on from the block list.
+META+B			Add the user the cursor is on to the block list.
+META+w			Warn the user the cursor is on.
+META+W			Warn the user the cursor is on anonymously.
+a				Get the away message of the user the cursor is on.
+i				Get the profile and away message of the user the cursor is on.
+CTRL+X			Switch to the next window in the window list.
+CTRL+Y			Switch to the previous window in the window list.

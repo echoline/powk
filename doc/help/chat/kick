@@ -1,0 +1,8 @@
+SYNTAX: chat kick <user>
+	Kicks the specified <user> from the chat IF it was created by this account.
+
+PARAMETERS
+	<user>     : The user to kick.
+
+SEE ALSO
+	chat

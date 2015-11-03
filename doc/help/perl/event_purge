@@ -1,0 +1,11 @@
+SYNTAX: PORK::event_purge()
+	Removes all event handlers.
+
+INPUT PARAMETERS
+	None
+
+RETURN VALUE
+	Returns 0.
+
+SEE ALSO
+	event purge

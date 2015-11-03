@@ -1,0 +1,8 @@
+SYNTAX: PORK::get_cur_user()
+	Retrieves the currently active account's user name.
+
+INPUT PARAMETERS
+	none
+
+RETURN VALUE
+	Returns the screen name of the currently active screen name.

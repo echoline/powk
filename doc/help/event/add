@@ -1,0 +1,9 @@
+SYNTAX: event add <event type> <handler cmd>
+	Adds a handler for an event type. When the specified event occurs, pork will call the Perl function specified, passing it relevant parameters. See the help page for 'event' for a full description of the events system.
+
+PARAMETERS
+	<event type> : The event to be handled.
+	<handler cmd>: The name of the Perl function that will be called when the event occurs.
+
+SEE ALSO
+	event

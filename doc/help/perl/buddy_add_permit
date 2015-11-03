@@ -1,0 +1,13 @@
+SYNTAX: PORK::buddy_add_permit(user, [account])
+	Adds a screen name to an account's permitted users list. Note that for AIM, in order to activate the permitted users list, your privacy mode must be set to 3.
+
+INPUT PARAMETERS
+	user   : The screen name to permit.
+	account: (Optional) The account whose permit list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy permit
+	buddy privacy_mode

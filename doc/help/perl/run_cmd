@@ -1,0 +1,11 @@
+SYNTAX: PORK::run_cmd(cmd1,...,cmdN)
+	Runs the list of commands as if entered from the input line.
+
+INPUT PARAMETERS
+	cmd1: Command to run. The command must not be prefixed with a '/'. 
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	input send

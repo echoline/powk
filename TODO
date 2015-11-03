@@ -1,0 +1,42 @@
+As of 0.98:
+
+--------------------------
+Plans for the next release
+--------------------------
+
+- The /set system needs a complete overhaul. There ought
+  to be protocol and account settings in addition to global and
+  window. There needs to be an option to make things like
+  /set wordwrap and its ilk retroactive to windows that
+  have already been created.
+    - I also need to add something like /acct save to save
+      account specific settings (once I had them). Maybe
+      /<protocol> save to support protocol specific settings (also
+     once i add them).
+
+- Add protocol-specific commands (e.g. /irc kline).
+- Add much better /save support.
+- Add missing events (mostly file transfer stuff, but probably more).
+
+
+----------
+The future
+----------
+
+- The perl stuff needs to be rewritten (in XS instead of straight C).
+    - Allow expanding perl variables on the input line (maybe with /eval).
+
+- Support making perl and IM protocols loadable plugins (or at least add
+  a configure option to allow them to be compiled that way, if desired). 
+
+- Support per-account events.
+
+
+----------------------------------------
+The stuff I really don't feel like doing
+----------------------------------------
+
+- The documentation is in pretty rough shape. I'd rather write code
+  than documentation, though, so.. I know nobody likes writing
+  documentation, but I'd really be thrilled if someone were willing
+  to do some work on this.

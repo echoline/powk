@@ -1,0 +1,8 @@
+SYNTAX: event del_refnum <refnum>
+	Deletes an event handler by reference number. The reference number for event handlers can be obtained using the 'event list' command.
+
+PARAMETERS
+	<refnum>: The reference number of the event handler to be deleted.
+
+SEE ALSO
+	event list

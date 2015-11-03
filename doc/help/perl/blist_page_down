@@ -1,0 +1,11 @@
+SYNTAX: PORK::blist_page_down([account])
+	Moves a buddy list's cursor down one "screenful" down, if possible. A screenful here is defined as the number of buddy list lines that are visible on the buddy list's display.
+
+INPUT PARAMETERS
+	account: (Optional) The account whose buddy list will be affected. If this parameter is omitted, the account that's bound to the current window is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	blist page_down

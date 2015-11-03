@@ -1,0 +1,13 @@
+SYNTAX: PORK::buddy_add_block(user, [account])
+	Adds a screen name to an account's blocked users list. Note that for AIM, in order to activate the blocked users list, your privacy mode must be set to 4.
+
+INPUT PARAMETERS
+	user   : The screen name to block.
+	account: (Optional) The account whose block list will be affected. If this parameter is omitted, the current account is assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	buddy block
+	buddy privacy_mode

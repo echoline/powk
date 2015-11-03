@@ -1,0 +1,13 @@
+SYNTAX: PORK::chat_send(chat_room, msg, [account])
+	Sends a message to a chat room.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room to which to send the message.
+	message  : The message to send.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure.
+
+SEE ALSO
+	chat send

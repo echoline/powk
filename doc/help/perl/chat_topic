@@ -1,0 +1,13 @@
+SYNTAX: PORK::chat_topic(chat_room, new_topic, account)
+	Sets the topic in a chat room.
+
+INPUT PARAMETERS
+	chat_room: The name/exchange combination of the chat room in which to set the topic.
+	new_topic: The new topic. If this parameter is undefined, the current chat topic will be returned.
+	account  : (Optional) The account on whose behalf the action will be performed. If this parameter is omitted, the account active in the current window will be assumed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on failure, when setting a topic. If the new_topic parameter is undefined, the current chat topic is returned.
+
+SEE ALSO
+	chat topic

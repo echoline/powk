@@ -1,0 +1,18 @@
+SYNTAX: PORK::timer_add(interval, times, command)
+  Adds a timer event that will cause a command to be run some number of times at a specified interval.
+
+INPUT PARAMETERS
+	interval: The interval at which the command will be run.
+	times   : The number of times to run the command. 0 means unlimited.
+	command : The command that will be run. The command can be any command that can be entered on the command line.
+
+RETURN VALUE
+	On success, returns the reference number of the timer event that was installed, on failure, returns -1.
+
+EXAMPLES
+	PORK::timer_add(30, 10, "echo testing");
+		- Causes the command "echo testing" to be executed every 30 seconds, a total of 10 times.
+
+SEE ALSO
+	timer
+	timer add

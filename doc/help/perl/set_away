@@ -1,0 +1,12 @@
+SYNTAX: PORK::set_away([away_msg], [account])
+	Sets a user idle with an away message. If the 'away_msg' parameter is omitted, the user will be set "unaway", if already away. If the 'account' parameter is omitted, the action will apply to the current account.
+
+INPUT PARAMETERS
+	away_msg: (Optional) The text of the away message.
+	account : (Optional) The account to mark as away.
+
+RETURN VALUE
+	Returns 0 on success and -1 on failure.
+
+SEE ALSO
+	away

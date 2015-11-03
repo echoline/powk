@@ -1,0 +1,11 @@
+SYNTAX: PORK::event_del_type(event_type)
+	Remove all event handlers for an event type.
+
+INPUT PARAMETERS
+	event_type: The type of event for which all handlers will be removed.
+
+RETURN VALUE
+	Returns 0 on success, -1 on error.
+
+SEE ALSO
+	event del
