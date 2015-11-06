@@ -73,6 +73,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "d:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -81,6 +82,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "f:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -89,6 +91,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "o:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -97,6 +100,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "h:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -105,6 +109,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "i:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -113,6 +118,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "b:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -121,6 +127,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "k:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -129,6 +136,7 @@ static int write_room(struct aim_chat *chat) {
 	while (cur != NULL) {
 		snprintf(buf, MAXSNLEN+3, "w:%s\n", (char*)cur->data);
 		fputs(buf, file);
+		buf[strcspn(buf, "\n")] = '\0';
 		screen_err_msg("%s", buf);
 		cur = cur->next;
 	}
@@ -547,7 +555,7 @@ void parse_ccom(char *cmd, struct chatroom *room, struct pork_acct *acct, int pr
 		if (priv > HALFOPS)
 			strcat(commands,", !unimm, !ban, !unban, !ab, !unab, !aw, !unaw, !halfop, !dehalfop, !bj");
 		if (priv > OPS)
-			strcat(commands,", !ak, !unak, !op, !deop, !fullop");
+			strcat(commands,", !ak, !unak, !op, !deop, !fullop, !save, !load");
 		if (priv > FULLOPS)
 			strcat(commands,", !defullop");
 		strcat(commands, ".");
@@ -698,6 +706,10 @@ void parse_ccom(char *cmd, struct chatroom *room, struct pork_acct *acct, int pr
 	} else if(!strncasecmp(cmd, "save", 4) && (priv >= FULLOPS)) {
 		if (!write_room(ccon)) {
 			screen_err_msg("unable to save config for room %s.\n", ccon->title);
+		}
+	} else if(!strncasecmp(cmd, "load ", 5) && (priv >= FULLOPS)) {
+		if (!read_room(ccon, &cmd[5])) {
+			screen_err_msg("unable to load config for room %s.\n", &cmd[5]);
 		}
 	} else if(!strncasecmp(cmd, "bj", 2) && (priv > HALFOPS)) {
 		ccon->banjoin = !ccon->banjoin;
@@ -872,6 +884,10 @@ static int aim_leave_chatroom(struct pork_acct *acct, struct chatroom *chat) {
 		dlist_destroy(a_chat->awarray, NULL, NULL);
 	if (a_chat->abqueue)
 		dlist_destroy(a_chat->abqueue, NULL, NULL);
+	if (a_chat->akqueue)
+		dlist_destroy(a_chat->akqueue, NULL, NULL);
+	if (a_chat->banlist)
+		dlist_destroy(a_chat->banlist, NULL, NULL);
 
 	pork_io_del(a_chat->conn);
 	aim_conn_kill(&priv->aim_session, &a_chat->conn);

@@ -1501,26 +1501,30 @@ static FAIM_CB(aim_recv_chatnav_info) {
 	return (1);
 }
 
-static int read_room(struct aim_chat *chat) {
+int elist_add_tail(dlist_t **list, char *str) {
+	int ret = 0;
+
+	if (!dlist_find(*list, str, (void*)strcmp)) {
+		*list = dlist_add_tail(*list, xstrdup(str));
+		ret = 1;
+	}
+
+	return ret;
+}
+
+int read_room(struct aim_chat *chat, char *title) {
 	char filename[65536];
 	char input[MAXSNLEN+3];
 	char *sn;
 	char *pork_dir = opt_get_str(OPT_PORK_DIR);
 	FILE *file;
 
-	chat->fullops = dlist_add_tail(chat->fullops, xstrdup("fun"));
-	chat->fullops = dlist_add_tail(chat->fullops, xstrdup("daniel"));
-	chat->fullops = dlist_add_tail(chat->fullops, xstrdup("eli"));
-	screen_err_msg("f:fun");
-	screen_err_msg("f:daniel");
-	screen_err_msg("f:eli");
-
 	if (pork_dir == NULL) {
 		sprintf(filename, ".");
 		opt_set(OPT_PORK_DIR, filename);
 	}
 
-	snprintf(filename, 65535, "%s/%s", pork_dir, chat->title);
+	snprintf(filename, 65535, "%s/%s", pork_dir, title);
 
 	file = fopen(filename, "rb");
 	if (file == NULL)
@@ -1532,34 +1536,32 @@ static int read_room(struct aim_chat *chat) {
 		sn = &input[2];
 		switch (input[0]) {
 			case 'f':
-				if (!dlist_find(chat->fullops, sn, (void*)strcmp)) {
-					chat->fullops = dlist_add_tail(chat->fullops, xstrdup(sn));
+				if (elist_add_tail(&chat->fullops, sn))
 					screen_err_msg("f:%s", sn);
-				}
 				break;
 			case 'o':
-				chat->oparray = dlist_add_tail(chat->oparray, xstrdup(sn));
-				screen_err_msg("o:%s", sn);
+				if (elist_add_tail(&chat->oparray, sn))
+					screen_err_msg("o:%s", sn);
 				break;
 			case 'h':
-				chat->halfops = dlist_add_tail(chat->halfops, xstrdup(sn));
-				screen_err_msg("h:%s", sn);
+				if (elist_add_tail(&chat->halfops, sn))
+					screen_err_msg("h:%s", sn);
 				break;
 			case 'i':
-				chat->immlist = dlist_add_tail(chat->immlist, xstrdup(sn));
-				screen_err_msg("i:%s", sn);
+				if (elist_add_tail(&chat->immlist, sn))
+					screen_err_msg("i:%s", sn);
 				break;
 			case 'b':
-				chat->abarray = dlist_add_tail(chat->abarray, xstrdup(sn));
-				screen_err_msg("b:%s", sn);
+				if (elist_add_tail(&chat->abarray, sn))
+					screen_err_msg("b:%s", sn);
 				break;
 			case 'k':
-				chat->akarray = dlist_add_tail(chat->akarray, xstrdup(sn));
-				screen_err_msg("k:%s", sn);
+				if (elist_add_tail(&chat->akarray, sn))
+					screen_err_msg("k:%s", sn);
 				break;
 			case 'w':
-				chat->awarray = dlist_add_tail(chat->awarray, xstrdup(sn));
-				screen_err_msg("w:%s", sn);
+				if (elist_add_tail(&chat->awarray, sn))
+					screen_err_msg("w:%s", sn);
 				break;
 			default:
 				break;
@@ -1605,7 +1607,7 @@ static FAIM_CB(aim_recv_chat_join) {
 			a_chat->owned = 0;
 			a_chat->chatsends = 2;
 		}
-		if (!read_room(a_chat))
+		if (!read_room(a_chat, a_chat->title))
 			screen_err_msg("Unable to load data for chatroom: %s", a_chat->title);
 	} else {
 		dlist_t *cur = a_chat->abarray;

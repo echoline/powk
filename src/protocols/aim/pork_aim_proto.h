@@ -36,5 +36,6 @@ int check_if_imm(char *sn, struct chatroom *ccon);
 
 void check_ab_queues(void);
 int aim_chat_rejoin(struct pork_acct *acct, struct chatroom *chat);
+int read_room(struct aim_chat *chat, char *title);
 
 #endif
